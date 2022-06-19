@@ -138,11 +138,10 @@ const getInfo = () => {
   message += `<span style="color: ${mainColor}">License</span>: ${packageJson.license}\n`;
   message += `<span style="color: ${mainColor}">Version</span>: ${packageJson.version}\n`;
   message += `<span style="color: ${mainColor}">Repo</span>: <a href="${packageJson.repository.url}" target="_blank">${packageJson.repository.url}</a>\n`;
+  message += `<span style="color: ${mainColor}">Forked from</span>: <a href="https://github.com/m4tt72/terminal">https://github.com/m4tt72/terminal</a>\n`;
   message += `<span style="color: ${mainColor}">Uptime</span>: ${formatDistanceToNow(
     visitedAt,
   )}\n`;
-  message += `<span style="color: ${mainColor}">Author</span>: ${packageJson.author.name} (${packageJson.author.email})\n`;
-  message += `<span style="color: ${mainColor}">Donate</span>: <a href="${packageJson.funding.url}" target="_blank">${packageJson.funding.type}</a>\n`;
 
   return message;
 };

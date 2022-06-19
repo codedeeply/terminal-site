@@ -15,6 +15,7 @@ const App = ({ Component, pageProps }) => {
 
   useEffect(() => {
     localStorage.setItem('visitedAt', new Date().toString());
+    localStorage.setItem('ps1user', 'guest');
   }, []);
 
   return (

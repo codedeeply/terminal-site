@@ -31,18 +31,18 @@ const IndexPage: React.FC<IndexPageProps> = ({ inputRef }) => {
   return (
     <>
       <Head>
-        <title>M4TT72 | Home</title>
+        <title>{'>'} codedeep.ly</title>
       </Head>
 
       <div
-        className="overflow-hidden h-full rounded"
+        className="h-full overflow-hidden rounded"
         style={{
           borderColor: theme.yellow,
           padding: config.border ? 16 : 8,
           borderWidth: config.border ? 2 : 0,
         }}
       >
-        <div ref={containerRef} className="overflow-y-auto h-full">
+        <div ref={containerRef} className="h-full overflow-y-auto">
           <History history={history} />
 
           <Input inputRef={inputRef} containerRef={containerRef} />
