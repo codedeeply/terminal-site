@@ -47,7 +47,7 @@ export const emacs = async (args?: string[]): Promise<string> => {
 
 export const nano = async (args?: string[]): Promise<string> => {
   return `you're much better off using 'vim'. trust me.`;
-}
+};
 
 export const sudo = async (args?: string[]): Promise<string> => {
   window.open('https://www.youtube.com/watch?v=dQw4w9WgXcQ', '_blank');
