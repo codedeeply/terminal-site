@@ -50,7 +50,9 @@ export const nano = async (args?: string[]): Promise<string> => {
 };
 
 export const sudo = async (args?: string[]): Promise<string> => {
-  window.open('https://www.youtube.com/watch?v=dQw4w9WgXcQ', '_blank');
+  setTimeout(function () {
+    window.open('https://www.youtube.com/watch?v=dQw4w9WgXcQ');
+  }, 1000);
 
   if (args[0] !== undefined) {
     return `Permission denied: unable to run the command '${args[0]}' as root.`;
