@@ -83,7 +83,7 @@ export const ShellProvider: React.FC<ShellProviderProps> = ({ children }) => {
         setHistory('');
         break;
       default: {
-        if (Object.keys(bin).indexOf(cmd) === -1) {
+        if ((await (await bin.getAllowedCommands(null)).indexOf(cmd)) === -1) {
           setHistory(`Command not found: ${cmd}. Try 'help' to get started.`);
         } else {
           try {

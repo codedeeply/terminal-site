@@ -2,11 +2,39 @@ import packageJson from '../../../package.json';
 import * as bin from './index';
 import { formatDistanceToNow } from 'date-fns';
 import { getQuote } from '../../api';
+// Blacklist prevents certain commands from being autofilled or listed in help list
+export const commandBlacklist = [
+  'canWriteToClipboard',
+  'getAllowedCommands',
+  'commandBlacklist',
+  'theme',
+  'copyToClipboard',
+  'triggerRestart',
+  'restartResult',
+];
+
+export const getAllowedCommands = async (args: string[]): Promise<string[]> => {
+  const commands = [];
+  const commandsAll = Object.keys(bin)
+    .sort()
+    .forEach(function (command, index) {
+      if (commandBlacklist.indexOf(command) > -1) {
+        // It's blacklisted! Next...
+        true;
+      } else {
+        commands.push(command);
+      }
+    });
+
+  return commands;
+};
 
 export const help = async (args: string[]): Promise<string> => {
-  const commands = Object.keys(bin).sort().join(', ');
+  const commands = await getAllowedCommands(args);
 
-  return `Available commands:\n${commands}\n\n[tab]\t trigger completion.\n[ctrl+l] clear terminal.\n[ctrl+c] cancel command.`;
+  return `Available commands:\n${commands.join(
+    ', ',
+  )}\n\n[tab]\t trigger completion.\n[ctrl+l] clear terminal.\n[ctrl+c] cancel command.`;
 };
 
 export const echo = async (args: string[]): Promise<string> => {
