@@ -1,10 +1,10 @@
 import * as bin from './bin';
 
-export const handleTabCompletion = (
+export const handleTabCompletion = async (
   command: string,
   setCommand: React.Dispatch<React.SetStateAction<string>>,
 ) => {
-  const commands = Object.keys(bin).filter((entry) =>
+  const commands = (await bin.getAllowedCommands(null)).filter((entry) =>
     entry.startsWith(command),
   );
 

@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { History } from '../interfaces/history';
 import * as bin from './bin';
-import { useTheme } from './themeProvider';
+//import { useTheme } from './themeProvider';
 
 interface ShellContextType {
   history: History[];
@@ -28,7 +28,7 @@ export const ShellProvider: React.FC<ShellProviderProps> = ({ children }) => {
   const [history, _setHistory] = React.useState<History[]>([]);
   const [command, _setCommand] = React.useState<string>('');
   const [lastCommandIndex, _setLastCommandIndex] = React.useState<number>(0);
-  const { theme, setTheme } = useTheme();
+  //const { theme, setTheme } = useTheme();
 
   useEffect(() => {
     setCommand('banner');
@@ -71,10 +71,9 @@ export const ShellProvider: React.FC<ShellProviderProps> = ({ children }) => {
 
     switch (cmd) {
       case 'theme':
-        const output = await bin.theme(args, setTheme);
-
-        setHistory(output);
-
+        //const output = await bin.theme(args, setTheme);
+        //setHistory(output);
+        setHistory(`Command not found: ${cmd}. Try 'help' to get started.`);
         break;
       case 'clear':
         clearHistory();
@@ -83,7 +82,7 @@ export const ShellProvider: React.FC<ShellProviderProps> = ({ children }) => {
         setHistory('');
         break;
       default: {
-        if (Object.keys(bin).indexOf(cmd) === -1) {
+        if ((await (await bin.getAllowedCommands(null)).indexOf(cmd)) === -1) {
           setHistory(`Command not found: ${cmd}. Try 'help' to get started.`);
         } else {
           try {
