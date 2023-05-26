@@ -46,7 +46,7 @@ export default (props) => {
 
   const instance = createInstance({
     urlBase: process.env.NEXT_PUBLIC_TRACKING_URL,
-    trackerUrl: `${process.env.NEXT_PUBLIC_TRACKING_URL}/js/`,
+    trackerUrl: `${process.env.NEXT_PUBLIC_TRACKING_URL}/matomo.php`,
     srcUrl: `${process.env.NEXT_PUBLIC_TRACKING_URL}/js/`,
     siteId: +process.env.NEXT_PUBLIC_TRACKING_SITE_ID,
     configurations: {
