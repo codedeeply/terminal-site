@@ -1,6 +1,6 @@
 # $ whoami?
 
-I'm Sam Thacker, a Software Engineer based in Richmond, VA. I currently work for CarMax, in addition to running my own web engineering business catering to individuals and small businesses. You can see my portfolio by typing 'portfolio' in the terminal.
+I'm Sam Thacker, a Senior Software Engineer based in Richmond, VA. I currently work for CarMax, in addition to running my own web engineering business catering to individuals and small businesses. You can see my portfolio by typing 'portfolio' in the terminal.
 
 Outside the realm of Software Engineering, I'm particularly interested in Philosophy of Mind and tying it to Computer Science.
 
