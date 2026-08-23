@@ -279,18 +279,6 @@
     "@jridgewell/resolve-uri" "^3.1.0"
     "@jridgewell/sourcemap-codec" "^1.4.14"
 
-"@m4tt72/matomo-tracker-js@^0.6.2":
-  version "0.6.2"
-  resolved "https://registry.yarnpkg.com/@m4tt72/matomo-tracker-js/-/matomo-tracker-js-0.6.2.tgz#004017c5860ef051a0a79df3962cdcf1eed3d094"
-  integrity sha512-pgY7ymfRh52yUb2h7fI12H1NHAkCWU1syuk7vivUx2ANfPNbqO7aAkaUgsHCp9nRdCrWN31YILQSiW61paR7GA==
-
-"@m4tt72/matomo-tracker-react@^0.6.2":
-  version "0.6.2"
-  resolved "https://registry.yarnpkg.com/@m4tt72/matomo-tracker-react/-/matomo-tracker-react-0.6.2.tgz#f7c552ceebcfee90a39c61e39bc874f30520b4c3"
-  integrity sha512-SrcMZJHPqpx2gf6wPF4gA5Lmm2LAc0GQJChBZrDMXb6iKJxm9h1b9t6xgvqDsXqDMXRj4y68wH41Z490XTc5hA==
-  dependencies:
-    "@m4tt72/matomo-tracker-js" "^0.6.2"
-
 "@napi-rs/wasm-runtime@^1.1.4":
   version "1.2.3"
   resolved "https://registry.yarnpkg.com/@napi-rs/wasm-runtime/-/wasm-runtime-1.2.3.tgz#97e3d45d7424dc5da1d4e32f3bf3b292f6c1b44c"
