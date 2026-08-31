@@ -49,7 +49,9 @@ export class restartResult {
   timeoutID: any;
 }
 
-export const triggerRestart = async (timeInSeconds: number): Promise<restartResult> => {
+export const triggerRestart = async (
+  timeInSeconds: number,
+): Promise<restartResult> => {
   var result = new restartResult();
   result.success = false;
   result.message = 'An unexpected error occurred while triggering restart.';
@@ -66,7 +68,8 @@ export const triggerRestart = async (timeInSeconds: number): Promise<restartResu
       window.location.reload();
     }, timeInMS);
     result.success = true;
-    result.message = 'Restarting your connection in ' + timeInSeconds + ' seconds.';
+    result.message =
+      'Restarting your connection in ' + timeInSeconds + ' seconds.';
     result.timeoutID = restartTimeoutID;
   } catch {
     result.success = false;
@@ -81,8 +84,7 @@ export const restart = async (args: string[]): Promise<string> => {
   var result = '';
 
   restartUsage.about = 'Restarts client connection to server.\n';
-  restartUsage.usage =
-    `
+  restartUsage.usage = `
 Usage:
   restart (<time in seconds [1s - 10s] | now>) [default: now]
   restart -a
@@ -183,7 +185,7 @@ Options:
       break;
     }
     case '--copy': {
-      await copyToClipboard("code@codedeep.ly").then(
+      await copyToClipboard('code@codedeep.ly').then(
         () => {
           result = 'Copied email to clipboard successfully.';
         },
