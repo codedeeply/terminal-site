@@ -1,11 +1,55 @@
-# To get started with Dependabot version updates, you'll need to specify which
-# package ecosystems to update and where the package manifests are located.
-# Please see the documentation for all configuration options:
-# https://docs.github.com/github/administering-a-repository/configuration-options-for-dependency-updates
+# Dependabot configuration.
+#
+# Rationale for the shape of this file: the previous config requested daily
+# ungrouped npm updates, which produced a PR per package. Five of those sat
+# open and unreviewed from early 2023 until they were superseded wholesale by
+# a single Next 13 -> 15 upgrade. Grouping minor/patch bumps into one PR per
+# week keeps the queue reviewable; majors stay ungrouped so they arrive as
+# individual PRs that can be assessed on their own merits.
+#
+# See https://docs.github.com/code-security/dependabot/dependabot-version-updates
 
 version: 2
 updates:
-  - package-ecosystem: "npm" # See documentation for possible values
-    directory: "/" # Location of package manifests
+  - package-ecosystem: "npm"
+    directory: "/"
     schedule:
-      interval: "daily"
+      interval: "weekly"
+      day: "monday"
+    open-pull-requests-limit: 5
+    labels:
+      - "dependencies"
+    commit-message:
+      prefix: "chore(deps)"
+      prefix-development: "chore(deps-dev)"
+    groups:
+      production-minor-patch:
+        dependency-type: "production"
+        update-types:
+          - "minor"
+          - "patch"
+      development-minor-patch:
+        dependency-type: "development"
+        update-types:
+          - "minor"
+          - "patch"
+
+  # The workflow files pin actions by commit SHA. Without this block those
+  # pins silently rot -- docker/build-push-action has been held at the v5.0.0
+  # SHA since 2023.
+  - package-ecosystem: "github-actions"
+    directory: "/"
+    schedule:
+      interval: "weekly"
+      day: "monday"
+    open-pull-requests-limit: 3
+    labels:
+      - "dependencies"
+      - "github-actions"
+    commit-message:
+      prefix: "chore(ci)"
+    groups:
+      github-actions:
+        update-types:
+          - "minor"
+          - "patch"
