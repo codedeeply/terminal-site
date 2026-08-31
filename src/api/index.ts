@@ -1,5 +1,9 @@
 import axios from 'axios';
 import config from '../../config.json';
+import { selectRandomQuote } from './quotes';
+
+export { selectRandomQuote, technologyQuotes } from './quotes';
+export type { TechnologyQuote } from './quotes';
 
 export const getProjects = async () => {
   const { data } = await axios.get(
@@ -21,12 +25,10 @@ export const getWeather = async (city: string) => {
   return data;
 };
 
-export const getQuote = async () => {
-  const { data } = await axios.get(
-    'https://api.quotable.io/random?tags=technology',
-  );
+export const getQuote = (random: () => number = Math.random) => {
+  const { text, author } = selectRandomQuote(random);
 
   return {
-    quote: `“${data.content}” — ${data.author}`,
+    quote: `“${text}” — ${author}`,
   };
 };

@@ -17,6 +17,11 @@
     "dev": "next dev",
     "next": "next",
     "lint": "eslint .",
+    "lint:ci": "eslint . --max-warnings 0",
+    "typecheck": "tsc --noEmit --incremental false",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "ci": "yarn lint:ci && yarn typecheck && yarn test && yarn build",
     "prepare": "husky install"
   },
   "dependencies": {
@@ -42,7 +47,8 @@
     "postcss": "^8.5.26",
     "prettier": "^2.8.7",
     "tailwindcss": "^3.4.19",
-    "typescript": "^5.9.3"
+    "typescript": "^5.9.3",
+    "vitest": "^4.0.0"
   },
   "resolutions": {
     "next/postcss": "^8.5.26",
